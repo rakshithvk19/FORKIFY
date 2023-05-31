@@ -90,7 +90,7 @@ const controlAddRecipe = async function (newRecipe) {
       addRecipeView.toggleWindow();
     }, MODAL_CLOSE_SEC * 1000);
   } catch (e) {
-    console.error(e);
+    // console.error(e);
     addRecipeView.renderError(e.message);
   }
 };
