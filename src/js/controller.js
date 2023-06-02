@@ -21,11 +21,9 @@ const controlRecipes = async function () {
     recipeView.renderSpinner();
 
     await model.loadRecipe(id);
-    console.log(model.state.recipe);
     recipeView.render(model.state.recipe);
     bookmarksView.render(model.state.bookmarks);
   } catch (err) {
-    console.log(err);
     recipeView.renderError();
   }
 };
@@ -40,7 +38,6 @@ const controlSearchResults = async function () {
     resultsView.render(model.getSearchResultsPage());
     paginationView.render(model.state.search);
   } catch (err) {
-    console.log(err);
     resultsView.renderError();
   }
 };
@@ -62,7 +59,6 @@ const controlAddBookmark = function () {
     model.deleteBookmark(model.state.recipe.id);
   }
   bookmarksView.render(model.state.bookmarks);
-  //console.log(model.state.bookmarks, model.state.recipe);
   recipeView.render(model.state.recipe);
 };
 
@@ -90,7 +86,6 @@ const controlAddRecipe = async function (newRecipe) {
       addRecipeView.toggleWindow();
     }, MODAL_CLOSE_SEC * 1000);
   } catch (e) {
-    // console.error(e);
     addRecipeView.renderError(e.message);
   }
 };

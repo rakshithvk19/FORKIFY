@@ -45,14 +45,12 @@ export const loadRecipe = async function (id) {
   } catch (err) {
     throw err;
   }
-  // console.log(state.recipe);
 };
 
 export const loadSearchResults = async function (query) {
   try {
     const data = await AJAX(`${API_URL}?search=${query}&key=${KEY}`);
     state.search.query = query;
-    // console.log(data.data.recipes);
     state.search.results = data.data.recipes.map(res => {
       return {
         id: res.id,
@@ -146,15 +144,13 @@ export const uploadRecipe = async function (newRecipe) {
       image_url: newRecipe.image,
     };
     const data = await AJAX(`${API_URL}?key=${KEY}`, recipe);
-    console.log(data);
 
     //Push recipe received to the model.
     state.recipe = createRecipeObject(data);
     addBookmark(state.recipe);
   } catch (err) {
-    console.error(err);
     throw err;
   }
 };
 
-// clearBookmarks();
+clearBookmarks();
